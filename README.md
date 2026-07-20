@@ -1,36 +1,102 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🌾 Farm to Table - Smart Agricultural Marketplace & AI Platform 🇱🇰
 
-## Getting Started
+[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=flat-square&logo=next.js)](https://nextjs.org/)
+[![React](https://img.shields.io/badge/React-19-61DAFB?style=flat-square&logo=react)](https://reactjs.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-v4-38B2AC?style=flat-square&logo=tailwind-css)](https://tailwindcss.com/)
+[![MongoDB](https://img.shields.io/badge/MongoDB-Mongoose-47A248?style=flat-square&logo=mongodb)](https://www.mongodb.com/)
+[![Cloudinary](https://img.shields.io/badge/Cloudinary-Media_Uploads-3B5998?style=flat-square&logo=cloudinary)](https://cloudinary.com/)
 
-First, run the development server:
+An end-to-end digital marketplace and smart agricultural platform built to eliminate middleman markups in Sri Lanka by directly connecting local farmers with consumers, hotels, restaurants, and logistics providers.
 
+---
+
+## 📸 Screenshots & Highlights
+
+### 🏠 1. Home / Landing Page
+*Dynamic, bi-lingual landing page with live marketplace overview, features, and direct access for farmers & buyers.*
+![Home Page](public/screenshots/home.png)
+
+---
+
+### 🛒 2. Marketplace Overview
+*Browse fresh organic produce, filter by region and grade, and place direct orders.*
+![Marketplace](public/screenshots/marketplace.png)
+
+---
+
+### 🚜 3. Farmer Portal & Dashboard
+*Farmers manage crop listings, view incoming orders, check price trends, and communicate with buyers.*
+![Farmer Portal](public/screenshots/farmer.png)
+
+---
+
+### 🤖 4. AI Crop Health & Disease Detection
+*AI-powered diagnostic scanner allowing farmers to upload leaf photos for immediate disease detection and treatment recommendations.*
+![AI Disease Detection](public/screenshots/disease_detection.png)
+
+---
+
+## ✨ Key Features
+
+- 🌾 **Direct Farmer-to-Consumer & B2B Trade**: Eliminates middlemen to ensure higher profits for farmers and lower prices for hotels/consumers.
+- 🤖 **AI Crop Health Diagnostic**: Powered by Gemini AI image analysis for instant disease detection.
+- 📈 **Wholesale Price Analytics**: Track daily pricing trends across central markets.
+- ☁️ **Cloudinary Image Storage**: Instant cloud uploading for crop photos, disease scans, and delivery receipts.
+- 🏨 **Hotel RFQs & Subscriptions**: Bulk bidding and automated recurring crop supply for hotel chains.
+- 🚚 **Proof of Delivery (POD)**: Driver signature and photo confirmation for orders.
+- 🌐 **Bi-lingual Interface**: Seamless support for Sinhala (සිංහල) and English (🌐).
+
+---
+
+## 🛠️ Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **UI**: React 19, Tailwind CSS v4, Lucide Icons
+- **Database**: MongoDB with Mongoose ORM
+- **Media Uploads**: Cloudinary SDK (`/api/upload`)
+- **AI Integration**: Google Gemini API
+- **Deployment**: Vercel / Node.js server
+
+---
+
+## 🚀 Getting Started
+
+### 1. Clone the repository
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/keshanrandula/farm2table-marketplace.git
+cd farm2table-marketplace
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Install dependencies
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Environment Variables Setup
+Create a `.env.local` file in the root directory (refer to `.env.example`):
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```env
+# MongoDB Connection
+MONGODB_URI=your_mongodb_connection_string
 
-## Learn More
+# Cloudinary Configuration
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dioosqpp7
+CLOUDINARY_CLOUD_NAME=dioosqpp7
+CLOUDINARY_API_KEY=your_api_key
+CLOUDINARY_API_SECRET=your_api_secret
 
-To learn more about Next.js, take a look at the following resources:
+# Gemini AI API Key
+GEMINI_API_KEY=your_gemini_api_key
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+### 4. Run the development server
+```bash
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Open [http://localhost:3000](http://localhost:3000) in your browser to view the application.
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📄 License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
