@@ -10,32 +10,6 @@ An end-to-end digital marketplace and smart agricultural platform built to elimi
 
 ---
 
-## 📸 Screenshots & Highlights
-
-### 🏠 1. Home / Landing Page
-*Dynamic, bi-lingual landing page with live marketplace overview, features, and direct access for farmers & buyers.*
-![Home Page](public/screenshots/home.png)
-
----
-
-### 🛒 2. Marketplace Overview
-*Browse fresh organic produce, filter by region and grade, and place direct orders.*
-![Marketplace](public/screenshots/marketplace.png)
-
----
-
-### 🚜 3. Farmer Portal & Dashboard
-*Farmers manage crop listings, view incoming orders, check price trends, and communicate with buyers.*
-![Farmer Portal](public/screenshots/farmer.png)
-
----
-
-### 🤖 4. AI Crop Health & Disease Detection
-*AI-powered diagnostic scanner allowing farmers to upload leaf photos for immediate disease detection and treatment recommendations.*
-![AI Disease Detection](public/screenshots/disease_detection.png)
-
----
-
 ## ✨ Key Features
 
 - 🌾 **Direct Farmer-to-Consumer & B2B Trade**: Eliminates middlemen to ensure higher profits for farmers and lower prices for hotels/consumers.
