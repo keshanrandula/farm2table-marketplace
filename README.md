@@ -54,8 +54,8 @@ Create a `.env.local` file in the root directory (refer to `.env.example`):
 MONGODB_URI=your_mongodb_connection_string
 
 # Cloudinary Configuration
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=dioosqpp7
-CLOUDINARY_CLOUD_NAME=dioosqpp7
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME=your_cloud_name
+CLOUDINARY_CLOUD_NAME=your_cloud_name
 CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 
