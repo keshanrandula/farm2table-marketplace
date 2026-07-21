@@ -10,10 +10,13 @@ export async function connectDB() {
   const uri = MONGODB_URI || "mongodb://127.0.0.1:27017/farm-to-table";
 
   try {
-    await mongoose.connect(uri);
+    await mongoose.connect(uri, {
+      serverSelectionTimeoutMS: 3000
+    });
     console.log("Connected to MongoDB successfully");
   } catch (error) {
     console.error("MongoDB connection error:", error);
-    throw error;
+    // Don't crash request if DB is offline for mock/AI fallback ops
   }
+
 }
