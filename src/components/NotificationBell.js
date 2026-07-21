@@ -112,13 +112,13 @@ export default function NotificationBell() {
                 {lang === "si" ? "දැනට කිසිදු දැනුම්දීමක් නැත" : lang === "ta" ? "அறிவிப்புகள் எதுவுமில்லை" : "No notifications yet"}
               </div>
             ) : (
-              notifications.map((n) => {
+              notifications.map((n, idx) => {
                 const titleText = lang === "si" ? (n.titleSi || n.title) : lang === "ta" ? (n.titleTa || n.title) : n.title;
                 const messageText = lang === "si" ? (n.messageSi || n.message) : lang === "ta" ? (n.messageTa || n.message) : n.message;
 
                 return (
                   <div
-                    key={n._id}
+                    key={n._id || n.id || `notif-${idx}`}
                     className={`p-4 transition flex gap-3 ${
                       n.isRead ? "bg-white dark:bg-gray-800" : "bg-emerald-50/40 dark:bg-emerald-950/30"
                     }`}

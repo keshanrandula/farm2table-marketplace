@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import AdminSidebar from "@/components/AdminSidebar";
 
 export default function AdminPayments() {
   const router = useRouter();
@@ -125,10 +124,7 @@ export default function AdminPayments() {
   const t = text[lang];
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50/50">
-      <AdminSidebar />
-
-      <main className="flex-1 p-6 md:p-10 overflow-y-auto space-y-8 text-gray-800">
+    <div className="space-y-8 max-w-7xl mx-auto">
         
         {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -330,7 +326,6 @@ export default function AdminPayments() {
           </div>
         )}
 
-      </main>
     </div>
   );
 }

@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import HotelSidebar from "@/components/HotelSidebar";
 
 export default function HotelRfqPage() {
   const router = useRouter();
@@ -129,10 +128,7 @@ export default function HotelRfqPage() {
   });
 
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <HotelSidebar />
-      
-      <main className="flex-1 p-6 md:p-10 max-w-7xl mx-auto space-y-8 overflow-y-auto">
+    <div className="space-y-8 max-w-7xl mx-auto">
         {/* Top Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-emerald-800 via-emerald-700 to-teal-800 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
           <div className="absolute right-0 top-0 opacity-10 translate-x-8 -translate-y-4">
@@ -508,7 +504,6 @@ export default function HotelRfqPage() {
             </div>
           </div>
         )}
-      </main>
     </div>
   );
 }

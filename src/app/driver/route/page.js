@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-import DriverSidebar from "@/components/DriverSidebar";
 
 const LOCATION_COORDINATES = {
   "nuwara eliya": [6.9497, 80.7891],
@@ -331,10 +330,7 @@ export default function RouteOptimization() {
   const t = text[lang];
 
   return (
-    <div className="min-h-screen flex flex-col md:flex-row bg-gray-50/50">
-      <DriverSidebar />
-
-      <main className="flex-1 p-6 md:p-10 overflow-y-auto space-y-8 text-gray-800">
+    <div className="space-y-8 max-w-7xl mx-auto">
         
         {/* Header bar */}
         <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
@@ -487,7 +483,6 @@ export default function RouteOptimization() {
           </div>
         )}
 
-      </main>
     </div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-export default function LanguageSwitcher({ onLangChange }) {
+export default function LanguageSwitcher({ onLangChange, direction = "down" }) {
   const [lang, setLang] = useState("si");
   const [isOpen, setIsOpen] = useState(false);
 
@@ -45,15 +45,15 @@ export default function LanguageSwitcher({ onLangChange }) {
     <div className="relative inline-block text-left">
       <button
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center gap-1.5 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 font-bold px-3 py-1.5 rounded-xl text-xs shadow-sm transition cursor-pointer"
+        className="flex items-center gap-1.5 bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-800 dark:text-gray-200 border border-gray-200 dark:border-gray-700 font-bold px-2.5 py-1.5 rounded-xl text-xs shadow-sm transition cursor-pointer shrink-0"
       >
         <span>{currentLangObj.flag}</span>
         <span>{currentLangObj.label}</span>
-        <span className="text-[10px] opacity-60">▼</span>
+        <span className="text-[10px] opacity-60">{direction === "up" ? "▲" : "▼"}</span>
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-36 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-xl z-50 overflow-hidden py-1">
+        <div className={`absolute right-0 ${direction === "up" ? "bottom-full mb-2" : "top-full mt-2"} w-36 bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 rounded-2xl shadow-2xl z-50 overflow-hidden py-1`}>
           {languages.map((l) => (
             <button
               key={l.code}

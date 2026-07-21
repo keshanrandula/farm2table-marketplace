@@ -110,23 +110,33 @@ export default function DriverSidebar() {
         </div>
 
         {/* Footer Info / Exit Button */}
-        <div className="p-4 border-t border-gray-100 bg-gray-50 rounded-b-3xl mt-auto">
-          <div className="flex items-center justify-between gap-2 px-3 py-2.5">
-            <div className="flex items-center gap-2">
-              <div className="h-9 w-9 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center text-sm shadow-inner">
+        <div className="p-4 border-t border-gray-100 dark:border-gray-800 bg-gray-50/80 dark:bg-gray-800/50 mt-auto space-y-3">
+          {/* Account Profile Badge & Notification Bell */}
+          <div className="flex items-center justify-between bg-white dark:bg-gray-800 p-2.5 rounded-2xl border border-gray-200/60 dark:border-gray-700 shadow-sm">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="h-8 w-8 shrink-0 rounded-full bg-indigo-100 dark:bg-indigo-950 text-indigo-700 dark:text-indigo-300 font-bold flex items-center justify-center text-xs shadow-inner">
                 🏍️
               </div>
-              <div>
-                <h4 className="text-xs font-bold text-gray-900 leading-tight">Driver Account</h4>
-                <p className="text-[10px] text-gray-500 font-medium">Dashboard Active</p>
+              <div className="truncate">
+                <h4 className="text-xs font-extrabold text-gray-900 dark:text-white truncate">Driver Account</h4>
+                <p className="text-[10px] text-indigo-600 dark:text-indigo-400 font-bold">● Dashboard Active</p>
               </div>
             </div>
-            <div className="flex items-center gap-1">
-              <NotificationBell />
-              <LanguageSwitcher />
-              <ThemeToggle />
-            </div>
+            <NotificationBell />
           </div>
+
+          {/* Preferences Controls Row: Language & Dark Theme */}
+          <div className="flex items-center justify-between gap-2 pt-0.5">
+            <LanguageSwitcher direction="up" />
+            <ThemeToggle />
+          </div>
+
+          <Link
+            href="/"
+            className="flex items-center justify-center gap-2 w-full bg-white dark:bg-gray-800 hover:bg-gray-100 dark:hover:bg-gray-700 text-gray-700 dark:text-gray-200 border border-gray-200 dark:border-gray-700 font-bold py-2.5 px-4 rounded-xl text-xs transition cursor-pointer shadow-sm"
+          >
+            ← Back to Home
+          </Link>
         </div>
       </aside>
     </>

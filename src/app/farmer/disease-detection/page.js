@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import Sidebar from "@/components/Sidebar";
 
 export default function DiseaseDetectionPage() {
   const router = useRouter();
@@ -97,10 +96,7 @@ export default function DiseaseDetectionPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <Sidebar />
-
-      <main className="flex-1 p-6 md:p-10 max-w-7xl mx-auto space-y-8 overflow-y-auto">
+    <div className="space-y-8 max-w-7xl mx-auto">
         {/* Header */}
         <div className="bg-gradient-to-r from-emerald-800 via-teal-800 to-emerald-950 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/30 backdrop-blur-md text-emerald-200 text-xs font-bold uppercase tracking-wider">
@@ -294,7 +290,6 @@ export default function DiseaseDetectionPage() {
             )}
           </div>
         </div>
-      </main>
     </div>
   );
 }

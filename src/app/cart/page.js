@@ -371,10 +371,11 @@ export default function ShoppingCart() {
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-50 text-sm font-semibold text-gray-700">
-                    {cartItems.map((item) => {
-                      const error = validationErrors[item.cropId];
+                    {cartItems.map((item, index) => {
+                      const itemId = item.cropId || item._id || item.id || `cart-item-${index}`;
+                      const error = validationErrors[itemId] || validationErrors[item.cropId];
                       return (
-                        <tr key={item.cropId} className="hover:bg-gray-50/50 transition">
+                        <tr key={itemId} className="hover:bg-gray-50/50 transition">
                           <td className="py-4 px-4">
                             <span className="font-bold text-gray-950 block">{item.name}</span>
                             <span className="text-[10px] text-gray-400 font-bold block mt-0.5">🌾 {item.location || 'Nuwara Eliya'}</span>
@@ -388,7 +389,7 @@ export default function ShoppingCart() {
                               min="0"
                               step="any"
                               value={item.quantity}
-                              onChange={(e) => handleQtyChange(item.cropId, e.target.value)}
+                              onChange={(e) => handleQtyChange(item.cropId || itemId, e.target.value)}
                               className={`w-full px-3 py-2 rounded-xl border text-sm font-bold text-gray-800 focus:outline-none 
                                 ${error 
                                   ? "border-red-400 focus:border-red-500 bg-red-50/20" 
@@ -405,7 +406,7 @@ export default function ShoppingCart() {
                           </td>
                           <td className="py-4 px-4 text-center">
                             <button
-                              onClick={() => handleRemoveItem(item.cropId)}
+                              onClick={() => handleRemoveItem(item.cropId || itemId)}
                               className="text-red-500 hover:text-red-700 text-xs font-bold transition cursor-pointer"
                             >
                               {t.removeBtn}

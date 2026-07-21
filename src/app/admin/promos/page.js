@@ -1,7 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
-import AdminSidebar from "@/components/AdminSidebar";
 
 export default function AdminPromosPage() {
   const router = useRouter();
@@ -112,10 +111,7 @@ export default function AdminPromosPage() {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
-      <AdminSidebar />
-
-      <main className="flex-1 p-6 md:p-10 max-w-7xl mx-auto space-y-8 overflow-y-auto">
+    <div className="space-y-8 max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 bg-gradient-to-r from-emerald-800 via-teal-800 to-emerald-950 text-white p-8 rounded-3xl shadow-xl relative overflow-hidden">
           <div className="relative z-10 space-y-2">
@@ -369,7 +365,6 @@ export default function AdminPromosPage() {
             </div>
           </div>
         )}
-      </main>
     </div>
   );
 }
