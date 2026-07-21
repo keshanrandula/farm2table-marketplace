@@ -24,7 +24,7 @@ export async function POST(request) {
       }
     }
 
-    const apiKey = process.env.GEMINI_API_KEY;
+    const apiKey = process.env.OPENROUTER_API_KEY || process.env.GEMINI_API_KEY;
 
     // Standard fallback mock responses in case the API key is missing
     if (!apiKey) {
@@ -59,7 +59,7 @@ export async function POST(request) {
     }
 
     // Prepare system instructions and contextual prompt for Gemini
-    const systemPrompt = `You are Jibi (ජිබී), a highly expert AI Agricultural Assistant built by Google for the "Farm to Table" platform in Sri Lanka.
+    const systemPrompt = `You are Jibi (ජිබී), a highly expert AI Agricultural Assistant built for the "Farm to Table" platform in Sri Lanka.
 Your goal is to provide highly specific, actionable, and practical agricultural advice to Sri Lankan farmers.
 
 Context:
@@ -75,43 +75,65 @@ If the query is in Sinhala, respond in fluent, grammatically correct, friendly S
 Tailor your advice specifically to the district's weather (e.g. if rain probability is high, warn them about pesticide runoff and suggest improving drainage channels; if it is hot and dry, suggest early morning/evening drip irrigation).
 Keep your answer concise (under 150 words), readable, and focused on helping the farmer succeed.`;
 
-    const requestBody = {
-      contents: [
-        {
-          role: 'user',
-          parts: [
-            {
-              text: `${systemPrompt}\n\nFarmer's Query: "${query}"`
-            }
-          ]
-        }
-      ],
-      generationConfig: {
-        temperature: 0.3,
-        maxOutputTokens: 500
-      }
-    };
+    let aiText = '';
 
-    // Call the real Google Gemini API using fetch
-    const response = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
-      {
+    // Check if the key is from OpenRouter (starts with sk-or-)
+    if (apiKey.startsWith('sk-or-')) {
+      const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json'
+          'Authorization': `Bearer ${apiKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://farm-to-table.vercel.app',
+          'X-Title': 'Farm to Table AI'
         },
-        body: JSON.stringify(requestBody)
+        body: JSON.stringify({
+          model: 'google/gemini-2.5-flash',
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: `Farmer's Query: "${query}"` }
+          ],
+          temperature: 0.3,
+          max_tokens: 600
+        })
+      });
+
+      const data = await response.json();
+      if (!response.ok) {
+        console.error('OpenRouter Gemini API request failed:', data);
+        throw new Error(data.error?.message || 'Failed to query OpenRouter Gemini API');
       }
-    );
 
-    const data = await response.json();
-    
-    if (!response.ok) {
-      console.error('Gemini API request failed:', data);
-      throw new Error(data.error?.message || 'Failed to query Gemini API');
+      aiText = data.choices?.[0]?.message?.content || '';
+    } else {
+      // Native Google Gemini REST API call
+      const requestBody = {
+        contents: [
+          {
+            role: 'user',
+            parts: [{ text: `${systemPrompt}\n\nFarmer's Query: "${query}"` }]
+          }
+        ],
+        generationConfig: { temperature: 0.3, maxOutputTokens: 500 }
+      };
+
+      const response = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`,
+        {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(requestBody)
+        }
+      );
+
+      const data = await response.json();
+      if (!response.ok) {
+        console.error('Gemini API request failed:', data);
+        throw new Error(data.error?.message || 'Failed to query Gemini API');
+      }
+
+      aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     }
-
-    const aiText = data.candidates?.[0]?.content?.parts?.[0]?.text || '';
     
     return NextResponse.json({
       success: true,
