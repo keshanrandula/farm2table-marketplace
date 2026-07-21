@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CITY_COORDS = {
   "Colombo": { lat: 6.9271, lon: 79.8612 },
@@ -43,7 +44,7 @@ export default function ProductDetail({ params }) {
   const id = resolvedParams.id;
   const router = useRouter();
 
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [buyerId, setBuyerId] = useState("");
   const [buyerRole, setBuyerRole] = useState("");
   const [crop, setCrop] = useState(null);

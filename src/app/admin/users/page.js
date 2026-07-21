@@ -1,10 +1,11 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function UserDirectory() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);

@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CITIES = [
   { en: "Nuwara Eliya", si: "නුවරඑළිය" },
@@ -34,7 +35,7 @@ const CITIES = [
 
 export default function AddCrop() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [farmerId, setFarmerId] = useState("");
   const [formData, setFormData] = useState({
     name: "",

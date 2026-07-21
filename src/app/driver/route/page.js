@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 const LOCATION_COORDINATES = {
   "nuwara eliya": [6.9497, 80.7891],
@@ -49,7 +50,7 @@ function calculateDistance(lat1, lon1, lat2, lon2) {
 
 export default function RouteOptimization() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [driverId, setDriverId] = useState("");
   const [activeOrders, setActiveOrders] = useState([]);
   const [loading, setLoading] = useState(true);

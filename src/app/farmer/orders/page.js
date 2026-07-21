@@ -1,10 +1,11 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function FarmerOrders() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [farmerId, setFarmerId] = useState("");
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);

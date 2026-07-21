@@ -2,10 +2,11 @@
 import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Register() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [formData, setFormData] = useState({
     name: "",
     email: "",

@@ -1,11 +1,11 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
-
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function FarmerChat() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [farmerId, setFarmerId] = useState("");
   const [threads, setThreads] = useState([]);
   const [activeThread, setActiveThread] = useState(null); // Selected thread object

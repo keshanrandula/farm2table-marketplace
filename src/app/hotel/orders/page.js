@@ -3,10 +3,11 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import InvoiceModal from "@/components/InvoiceModal";
 import DriverLiveMap from "@/components/DriverLiveMap";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HotelOrders() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [buyerId, setBuyerId] = useState("");
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);

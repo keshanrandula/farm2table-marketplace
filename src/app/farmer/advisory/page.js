@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
+import { useLanguage } from "@/context/LanguageContext";
 
 
 const DISTRICT_COORDS = {
@@ -15,7 +16,7 @@ const DISTRICT_COORDS = {
 
 export default function AgriIntelligence() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [farmerId, setFarmerId] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("Nuwara Eliya");
   
