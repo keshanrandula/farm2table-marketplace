@@ -17,13 +17,19 @@ export const metadata = {
   description: "Fresh farm produce straight to your table",
 };
 
+export const viewport = {
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 1,
+};
+
 export default function RootLayout({ children }) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased overflow-x-hidden max-w-full`}
     >
-      <body className="min-h-full flex flex-col bg-gray-50 text-gray-900 antialiased transition-colors duration-200">
+      <body className="min-h-full flex flex-col bg-gray-50 text-gray-900 antialiased transition-colors duration-200 overflow-x-hidden max-w-full">
         <ThemeInitializer />
         {children}
       </body>
