@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function FarmerDashboard() {
   const router = useRouter();
@@ -9,7 +10,7 @@ export default function FarmerDashboard() {
   const [orders, setOrders] = useState([]);
   const [farmerId, setFarmerId] = useState("");
   const [loading, setLoading] = useState(true);
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
 
   useEffect(() => {
     if (typeof window !== "undefined") {

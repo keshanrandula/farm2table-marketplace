@@ -2,10 +2,11 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import PodModal from "@/components/PodModal";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function DriverDashboard() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [driverId, setDriverId] = useState("");
   const [availableOrders, setAvailableOrders] = useState([]);
   const [activeOrders, setActiveOrders] = useState([]);

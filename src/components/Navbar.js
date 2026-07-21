@@ -5,17 +5,18 @@ import { useRouter } from "next/navigation";
 import ThemeToggle from "./ThemeToggle";
 import LanguageSwitcher from "./LanguageSwitcher";
 import NotificationBell from "./NotificationBell";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Navbar({ lang: propLang, setLang: propSetLang }) {
   const router = useRouter();
-  const [localLang, setLocalLang] = useState("si");
+  const { lang: ctxLang, setLang: ctxSetLang } = useLanguage();
   const [user, setUser] = useState(null);
   const [cartCount, setCartCount] = useState(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
-  // Sync lang with props if available, otherwise use local state
-  const lang = propLang || localLang;
-  const setLang = propSetLang || setLocalLang;
+  // Sync lang with props if available, otherwise use context
+  const lang = propLang || ctxLang;
+  const setLang = propSetLang || ctxSetLang;
 
   useEffect(() => {
     if (typeof window !== "undefined") {

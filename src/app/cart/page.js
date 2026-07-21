@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
+import { useLanguage } from "@/context/LanguageContext";
 
 const CITY_COORDS = {
   "Colombo": { lat: 6.9271, lon: 79.8612 },
@@ -40,7 +41,7 @@ const calculateDistance = (lat1, lon1, lat2, lon2) => {
 
 export default function ShoppingCart() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [buyerId, setBuyerId] = useState("");
   const [cart, setCart] = useState({});
   const [loading, setLoading] = useState(true);

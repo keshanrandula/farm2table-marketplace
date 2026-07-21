@@ -1,25 +1,10 @@
 "use client";
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function LanguageSwitcher({ onLangChange, direction = "down" }) {
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [isOpen, setIsOpen] = useState(false);
-
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      const stored = localStorage.getItem("app_lang") || "si";
-      setLang(stored);
-
-      const handleCustomEvent = (e) => {
-        if (e.detail) {
-          setLang(e.detail);
-        }
-      };
-
-      window.addEventListener("lang-changed", handleCustomEvent);
-      return () => window.removeEventListener("lang-changed", handleCustomEvent);
-    }
-  }, []);
 
   const languages = [
     { code: "si", label: "සිංහල", flag: "🇱🇰" },
@@ -30,10 +15,6 @@ export default function LanguageSwitcher({ onLangChange, direction = "down" }) {
   const handleSelectLanguage = (code) => {
     setLang(code);
     setIsOpen(false);
-    if (typeof window !== "undefined") {
-      localStorage.setItem("app_lang", code);
-      window.dispatchEvent(new CustomEvent("lang-changed", { detail: code }));
-    }
     if (onLangChange) {
       onLangChange(code);
     }

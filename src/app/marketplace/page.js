@@ -2,11 +2,12 @@
 import { useState, useEffect } from "react";
 import CropCard from "@/components/CropCard";
 import Navbar from "@/components/Navbar";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function Marketplace() {
   const [crops, setCrops] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedLocation, setSelectedLocation] = useState("all");
 

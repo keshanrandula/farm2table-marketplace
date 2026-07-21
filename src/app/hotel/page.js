@@ -3,12 +3,13 @@ import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import FarmerMap from "@/components/FarmerMap";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function HotelWholesale() {
   const router = useRouter();
   const [crops, setCrops] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [buyerId, setBuyerId] = useState("");
   
   // Cart items indexed by cropId: { cropId, name, quantity, price, stockLimit }

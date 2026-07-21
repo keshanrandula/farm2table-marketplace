@@ -2,10 +2,11 @@
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useLanguage } from "@/context/LanguageContext";
 
 export default function AdminOverview() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [adminUser, setAdminUser] = useState(null);
   const [stats, setStats] = useState({
     totalFarmers: 0,

@@ -2,6 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 import Navbar from "@/components/Navbar";
+import { useLanguage } from "@/context/LanguageContext";
 
 const LOCATION_COORDINATES = {
   "nuwara eliya": [6.9497, 80.7891],
@@ -35,7 +36,7 @@ const LOCATION_COORDINATES = {
 
 export default function BuyerOrders() {
   const router = useRouter();
-  const [lang, setLang] = useState("si");
+  const { lang, setLang } = useLanguage();
   const [buyerId, setBuyerId] = useState("");
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
